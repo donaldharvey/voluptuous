@@ -204,6 +204,7 @@ class Schema(object):
         :param schema: Validation schema. See :module:`voluptuous` for details.
         :param required: Keys defined in the schema must be in the data.
         :param extra: Keys in the data need not have keys in the schema.
+        :param strip: Strip out keys not in the schema without raising an error.
         """
         self.schema = schema
         self.required = required
