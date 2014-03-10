@@ -308,7 +308,7 @@ class Schema(object):
                     if self.extra:
                         out[key] = value
                     else:
-                        if not strip:
+                        if not self.strip:
                             errors.append(Invalid('extra keys not allowed', key_path))
 
             for key in required_keys:
