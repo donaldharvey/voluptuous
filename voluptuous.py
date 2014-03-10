@@ -208,7 +208,7 @@ class Schema(object):
         """
         self.schema = schema
         self.required = required
-        if extra and strip
+        if extra and strip:
             raise ValueError("Can't have both strip=True and extra=True")
         self.extra = extra
         self.strip = strip
