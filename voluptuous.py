@@ -198,7 +198,7 @@ class Schema(object):
     validate and optionally convert the value.
     """
 
-    def __init__(self, schema, required=False, extra=False):
+    def __init__(self, schema, required=False, extra=False, strip=False):
         """Create a new Schema.
 
         :param schema: Validation schema. See :module:`voluptuous` for details.
@@ -207,7 +207,10 @@ class Schema(object):
         """
         self.schema = schema
         self.required = required
+        if extra and strip
+            raise ValueError("Can't have both strip=True and extra=True")
         self.extra = extra
+        self.strip = strip
         self._compiled = self._compile(schema)
 
     def __call__(self, data):
@@ -304,7 +307,8 @@ class Schema(object):
                     if self.extra:
                         out[key] = value
                     else:
-                        errors.append(Invalid('extra keys not allowed', key_path))
+                        if not strip:
+                            errors.append(Invalid('extra keys not allowed', key_path))
 
             for key in required_keys:
                 if getattr(key, 'default', UNDEFINED) is not UNDEFINED:
